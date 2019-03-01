@@ -6,18 +6,20 @@
   ];
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "sd_mod" "sr_mod" ];
-  boot.kernelModules = [];
-  boot.extraModulePackages = [];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
+
+  boot.initrd.luks.devices."root".device = "/dev/sda2";
 
   fileSystems."/" = {
     device = "/dev/mapper/root";
     fsType = "xfs";
   };
 
-  fileSystem."/boot" = {
-    device = "/dev/sda2";
+  fileSystems."/boot" = {
+    device = "/dev/sda1";
     fsType = "vfat";
-  }
+  };
 
   boot.loader.grub = {
     enable = true;
