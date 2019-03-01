@@ -10,9 +10,14 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/sda1";
+    device = "/dev/mapper/root";
     fsType = "xfs";
   };
+
+  fileSystem."/boot" = {
+    device = "/dev/sda2";
+    fsType = "vfat";
+  }
 
   boot.loader.grub = {
     enable = true;
