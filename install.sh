@@ -1,4 +1,5 @@
-#! /bin/sh
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p cryptsetup git
 
 parted /dev/sda -- mklabel msdos
 parted /dev/sda -- mkpart primary 1 512M
