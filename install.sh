@@ -5,7 +5,7 @@ parted /dev/sda -- mklabel msdos
 parted /dev/sda -- mkpart primary 1 512M
 parted /dev/sda -- mkpart primary 512M -1
 
-cryptsetup luksFormat --type luks2 --hash argon2id --cipher aes-xts-plain64 --key-size 512 /dev/sda2
+cryptsetup luksFormat --type luks2 --hash sha512 --cipher aes-xts-plain64 --key-size 512 /dev/sda2
 cryptsetup luksOpen /dev/sda2 root
 
 mkfs.vfat /dev/sda1
