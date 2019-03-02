@@ -9,16 +9,10 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."root".device = "/dev/sda2";
 
   fileSystems."/" = {
-    device = "/dev/mapper/root";
-    fsType = "xfs";
-  };
-
-  fileSystems."/boot" = {
     device = "/dev/sda1";
-    fsType = "vfat";
+    fsType = "xfs";
   };
 
   boot.loader.grub = {
